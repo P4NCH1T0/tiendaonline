@@ -1,21 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './Navbar.css';
 
-export const Navbar = () => {
-  return (
-    <nav class="navbar">
-        <a href="#" class="logo">TiendaOnline</a>
-        <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Productos</a></li>
-            <li><a href="#">Ofertas</a></li>
-            <li><a href="#">Contacto</a></li>
-            <li><a href="#">Sobre Nosotros</a></li>
-        </ul>
-        <div class="search-box">
-            <input type="text" placeholder="Buscar..."/>
-            <button type="submit">Buscar</button>
-        </div>
-    </nav>
-  )
-}
+const Navbar = () => {
+    const [menuActive, setMenuActive] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuActive(!menuActive);
+    };
+
+    return (
+        <header>
+            <nav className="navbar">
+                <div className="navbar-brand">
+                    <a href="#">LuxFashion</a>
+                </div>
+                <div className="navbar-toggle" onClick={toggleMenu}>
+                    <span className="navbar-toggle-icon"></span>
+                    <span className="navbar-toggle-icon"></span>
+                    <span className="navbar-toggle-icon"></span>
+                </div>
+                <ul className={`navbar-menu ${menuActive ? 'active' : ''}`}>
+                    <li className="navbar-item"><a href="#">Hombre</a></li>
+                    <li className="navbar-item"><a href="#">Mujer</a></li>
+                    <li className="navbar-item"><a href="#">Colección</a></li>
+                    <li className="navbar-item"><a href="#">Ofertas</a></li>
+                    <li className="navbar-item"><a href="#">Sobre Nosotros</a></li>
+                    <li className="navbar-item"><a href="#">Cuenta</a></li>
+                </ul>
+            </nav>
+        </header>
+    );
+};
+
+export default Navbar;
